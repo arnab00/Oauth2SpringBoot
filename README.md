@@ -3,11 +3,11 @@
 ## usage:
 GET request:
 ```
-URI:  http://localhost:8080/oauth/authorize?client_id=test&response_type=code&scope=read
+URI:  http://localhost:8080/oauth/authorize?client_id=test&response_type=code&scope=read&state=XXXXXXXXXXXXXXX
 ```
 
 Response:
-Login page. After login auto redirect to: http://localhost:8090?code=XXXXXX
+Login page. After login auto redirect to: http://localhost:8090?code=XXXXXX&state=XXXXXXXXXXXXXXX
 
 
 POST request:
