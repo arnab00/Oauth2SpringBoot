@@ -1,4 +1,4 @@
-package com.security.oauth2springboot;
+package com.security.oauth2springboot.config;
 
 import java.io.IOException;
 
@@ -27,8 +27,8 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
 	 */
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("test").authorizedGrantTypes("authorization_code").accessTokenValiditySeconds(300)
-				.autoApprove(true).redirectUris("http://localhost:8080/").authorities("CLIENT");
+		clients.inMemory().withClient("test").secret("{noop}test").authorizedGrantTypes("authorization_code").scopes("read").accessTokenValiditySeconds(300)
+				.redirectUris("http://localhost:8090/").authorities("CLIENT");
 	}
 
 	/**
@@ -46,7 +46,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
 	 */
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		endpoints.accessTokenConverter(accessTokenConverter()).tokenStore(tokenStore());
+		endpoints.accessTokenConverter(accessTokenConverter()).tokenStore(tokenStore()).approvalStoreDisabled();
 	}
 
 	@Value("classpath:keys/pvt.key")
