@@ -1,6 +1,6 @@
 # Oauth2SpringBoot
 
-##usage:
+## usage:
 GET request:
 ```
 URI:  http://localhost:8080/oauth/authorize?client_id=test&response_type=code&scope=read
